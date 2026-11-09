@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "research-desk",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Your existing front end goes in ./public. Only /api/* runs the Worker;
+  // everything else is served directly as static assets.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "not_found_handling": "single-page-application"
+  },
+
+  "observability": { "enabled": true },
+
+  // Non-secret settings. Secrets (API keys) are set with `wrangler secret put`.
+  "vars": {
+    "USE_AZURE": "true",
+    // "AZURE_OPENAI_ENDPOINT": "https://your-resource-name.openai.azure.com/",
+    "AZURE_RESEARCHER_DEPLOYMENT": "gpt-6-luna",
+    "AZURE_ANALYST_DEPLOYMENT": "gpt-6-luna",
+    "AZURE_WRITER_DEPLOYMENT": "gpt-6-luna",
+    "RESEARCHER_MODEL": "gpt-6-luna",
+    "ANALYST_MODEL": "gpt-6-luna",
+    "WRITER_MODEL": "gpt-6-luna",
+
+    // Cloudflare Access (Zero Trust). Fill in after creating the Access application.
+    "ENFORCE_ACCESS": "true",
+    "CF_ACCESS_TEAM_DOMAIN": "your-team.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "your-access-application-aud-tag"
+  }
+}

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Desk</title>
+  <meta name="description" content="Three AI agents research, analyse and write an executive report on any topic.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">Research Desk</span>
+    </a>
+    <div id="account" class="account" hidden>
+      <span id="account-name"></span>
+      <a href="/cdn-cgi/access/logout">Sign out</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Researcher &rarr; Analyst &rarr; Writer</p>
+      <h1>Ask a question.<br>Get an executive report.</h1>
+      <p class="lede">Three AI agents search the live web, analyse what they find, and write a structured report you can copy, download or print.</p>
+    </section>
+
+    <form id="form" class="card composer" autocomplete="off">
+      <label for="query" class="label">Research question</label>
+      <textarea id="query" name="query" rows="3" maxlength="500" required
+        placeholder="e.g. What is the outlook for electric vehicle batteries in 2027?"></textarea>
+      <div class="composer-row">
+        <div class="field">
+          <label for="language" class="label">Report language</label>
+          <select id="language" name="language">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+        <span id="count" class="count" aria-live="polite">0 / 500</span>
+        <button id="run" class="btn btn-primary" type="submit">Generate report</button>
+      </div>
+      <div class="examples" aria-label="Example questions">
+        <span class="label">Try:</span>
+        <button type="button" class="chip" data-q="What are the latest trends in batteries for electric vehicles?">EV batteries</button>
+        <button type="button" class="chip" data-q="What is the business outlook and competitor landscape for Microsoft in 2027?">Microsoft outlook</button>
+        <button type="button" class="chip" data-q="How are small modular nuclear reactors being adopted worldwide?">Small modular reactors</button>
+        <button type="button" class="chip" data-q="What are the main risks and opportunities in generative AI regulation?">AI regulation</button>
+      </div>
+    </form>
+
+    <section id="progress" class="card progress" hidden aria-live="polite">
+      <div class="progress-head">
+        <h2>Working on it</h2>
+        <span id="elapsed" class="elapsed">0s</span>
+      </div>
+      <ol class="steps">
+        <li data-step="research"><span class="dot"></span><div><strong>Researcher</strong><small>Searching the web</small></div></li>
+        <li data-step="analyze"><span class="dot"></span><div><strong>Analyst</strong><small>Finding trends and risks</small></div></li>
+        <li data-step="write"><span class="dot"></span><div><strong>Writer</strong><small>Drafting the report</small></div></li>
+      </ol>
+    </section>
+
+    <section id="error" class="card error" hidden role="alert">
+      <strong>Something went wrong</strong>
+      <p id="error-text"></p>
+      <button id="retry" class="btn btn-ghost" type="button">Try again</button>
+    </section>
+
+    <section id="result" class="result" hidden>
+      <div class="card summary">
+        <p class="eyebrow">Executive summary</p>
+        <p id="summary-text" class="summary-text"></p>
+        <div class="actions">
+          <button id="copy" class="btn btn-ghost" type="button">Copy markdown</button>
+          <button id="download" class="btn btn-ghost" type="button">Download .md</button>
+          <button id="print" class="btn btn-ghost" type="button">Print</button>
+        </div>
+      </div>
+
+      <article class="card report">
+        <p class="eyebrow">Full report</p>
+        <div id="report" class="prose"></div>
+      </article>
+
+      <div class="card followups">
+        <p class="eyebrow">Follow-up questions</p>
+        <ul id="followups"></ul>
+      </div>
+
+      <details class="card notes">
+        <summary>Show agent notes</summary>
+        <h3>Researcher findings</h3>
+        <div id="notes-research" class="prose"></div>
+        <h3>Analyst insights</h3>
+        <div id="notes-analysis" class="prose"></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AI-generated content can contain errors. Verify important facts against the original sources.</p>
+  </footer>
+</body>
+</html>

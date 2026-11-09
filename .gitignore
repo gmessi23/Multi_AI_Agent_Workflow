@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Wrangler local state
+.wrangler/
+
+# Secrets: keep the examples, ignore the real files
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env
+.env.*
+!.env.example
+local.settings.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Claude Code local settings (personal, per machine)
+.claude/settings.local.json
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Leftovers from the old Azure/Python version, in case they get copied in
+__pycache__/
+.venv/
+*.zip

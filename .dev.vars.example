@@ -1,0 +1,11 @@
+# Copy to .dev.vars for local `wrangler dev` (never commit .dev.vars)
+TAVILY_API_KEY=
+OPENAI_API_KEY=
+
+# Azure / Foundry instead of OpenAI:
+# USE_AZURE=true
+# AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+# AZURE_OPENAI_API_KEY=
+
+# No Access in front of localhost, so skip JWT checks locally only
+ENFORCE_ACCESS=false
