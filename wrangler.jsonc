@@ -29,7 +29,7 @@
 
     // Cloudflare Access (Zero Trust). Fill in after creating the Access application.
     "ENFORCE_ACCESS": "true",
-    "CF_ACCESS_TEAM_DOMAIN": "your-team.cloudflareaccess.com",
-    "CF_ACCESS_AUD": "your-access-application-aud-tag"
+    "CF_ACCESS_TEAM_DOMAIN": "soft-tooth-e6a4.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "7660813c4e151c543ba21c615a9be7fabdf745bf6f10cdcc0acb80e0dc69da89"
   }
 }
